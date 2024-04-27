@@ -32,10 +32,13 @@ doc = Metashape.Document()
 doc.open("project.psz")
 chunk = doc.chunk
 
-directory = 'images/mouse'
-for filename in os.listdir(directory):
-    file = os.path.join(directory, filename)
-    chunk.addPhotos(file)
+# directory = 'images/cup'
+# i = 0
+# for filename in os.listdir(directory):
+#     if i % 3 == 0:
+#         file = os.path.join(directory, filename)
+#         chunk.addPhotos(file)
+#     i = i + 1
 
 chunk.matchPhotos(downscale=1, generic_preselection=True, reference_preselection=False)
 # chunk.alignCameras()
@@ -44,5 +47,5 @@ chunk.matchPhotos(downscale=1, generic_preselection=True, reference_preselection
 # chunk.buildModel(surface_type=Metashape.Arbitrary, interpolation=Metashape.EnabledInterpolation)
 # chunk.buildUV(mapping_mode=Metashape.GenericMapping)
 # chunk.buildTexture(blending_mode=Metashape.MosaicBlending, texture_size=4096)
-# doc.save("project.psz")
-doc.save()
+doc.save("project.psz")
+# doc.save()
