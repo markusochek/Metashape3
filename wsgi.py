@@ -24,10 +24,13 @@ def upload_file():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        service.create_3d_modal(file)
-    return '{ "data" : "true" }'
+        return '{ "data" : ' + service.create_3d_modal(filename) + ' }'
+    return None
 
 
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+app.run(host='localhost', port=3000)
